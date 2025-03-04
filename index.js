@@ -41,9 +41,12 @@ return res.status(statusCode).json({
 app.get("/", (req, res) => {
   sendResponse(res, 200, "Hello World! This is a success message");
 });
+app.use("/api/",require("./route/authenticate.js"))
+app.use("/api/user",require("./route/userRoute.js"))
+app.use("/api/products",require("./route/productRoute.js"))
+app.use("/api/order",require("./route/orderRoute.js"))
 
 connectDb();
-
 app.listen(port, () => {
   console.log(`This is running on port ${port}`.green.bold);
 });
