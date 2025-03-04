@@ -26,9 +26,9 @@ const getOrder = async (req, res) => {
     }
 };
 
-const getOrderById = async (req, res) => {
+const getOrderByNumber = async (req, res) => {
     try {
-        const order = await Order.findById(req.params.id)
+        const order = await Order.findOne({ orderNumber: req.params.orderNumber })
             .populate('user', 'name email') // Populate user details
             .populate('orderItems.product'); // Populate product details
 
@@ -41,4 +41,5 @@ const getOrderById = async (req, res) => {
 };
 
 
-module.exports ={createOrder,getOrder,getOrderById}
+
+module.exports ={createOrder,getOrder,getOrderByNumber}
