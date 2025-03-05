@@ -15,9 +15,9 @@ const createOrder = async (req, res) => {
     }
 };
 
-const getOrder = async (req, res) => {
+const getAllOrder = async (req, res) => {
     try {
-        const orders = await Order.find({ user: req.user.id })
+        const orders = await Order.find()
             .populate('user', 'name email') // Populate user details
             .populate('orderItems.product'); // Populate product details
         res.json(orders);
@@ -42,4 +42,4 @@ const getOrderByNumber = async (req, res) => {
 
 
 
-module.exports ={createOrder,getOrder,getOrderByNumber}
+module.exports ={createOrder,getOrderByNumber,getAllOrder}

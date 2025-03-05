@@ -4,7 +4,7 @@ const upload = require("../upload/multerConfig")
 
 const getProduct = async (req, res) => {
     try {
-        const { search, color, size, brand, gender, newlyAdded, page = 1, limit = 10 } = req.query;
+        const { search, color, size, brand, gender, newlyAdded, page = 1, limit = 20 } = req.query;
         let filter = {};
         if (search) filter.name = new RegExp(search, 'i');
         if (color) filter.color = color;
@@ -83,12 +83,6 @@ const updateProduct = async (req, res) => {
         res.status(500).json({ error: err.message });
     }
 };
-
-
-
-
-
-
 
 const deleteProduct =async (req, res) => {
     try {
