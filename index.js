@@ -12,7 +12,8 @@ const ServerlessHttp = require("serverless-http");
 const corsOptions = {
     origin: function (origin, callback) {
       const allowedOrigins = [
-        "http://localhost:3000",    
+        "http://localhost:3000",
+        process.env.CLIENTSIDE_URL    
       ];
       if (allowedOrigins.includes(origin) || !origin) {
         callback(null, true);
